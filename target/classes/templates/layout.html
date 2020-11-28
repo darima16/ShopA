@@ -10,22 +10,26 @@
     <div class="container">
       <div class="navbar">
         <div class="navbar-inner">
-          <a class="brand"
-              href="https://github.com/ultraq/thymeleaf-layout-dialect">
-              Shop
-          </a>
           <ul class="nav">
             <li>
-              <a th:href="@{/}" href="messages.html">
-                Items
+              <a th:href="@{/?create}" href="form.html">
+                Добавить товар
+              </a>
+            </li>
+            <li>
+              |
+            </li>
+            <li>
+              <a th:href="@{/?shop}" href="messages.html">
+                Магазин
               </a>
             </li>
           </ul>
         </div>
       </div>
-      <h1 layout:fragment="header">Layout</h1>
+      <h1 layout:fragment="header"></h1>
       <div layout:fragment="content">
-        Fake content
+        Здесь пока ничего нет
       </div>
     </div>
   </body>

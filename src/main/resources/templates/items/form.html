@@ -3,10 +3,10 @@
   xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
   layout:decorator="layout">
   <head>
-    <title>Items : Create</title>
+    <title>Добавить товар</title>
   </head>
   <body>
-    <h1 layout:fragment="header">Items : Create</h1>
+    <h1 layout:fragment="header"></h1>
     <div layout:fragment="content"
         class="container">
       <form id="itemsForm"
@@ -21,21 +21,22 @@
             Validation error
           </p>
         </div>
-        <div class="pull-right">
-          <a th:href="@{/}" href="messages.html">
-            Items
-          </a>
-        </div>
-        <label for="summary">Summary</label>
+        <label for="name">Название товара</label>
         <input type="text"
-            th:field="*{summary}"
-            th:class="${#fields.hasErrors('summary')} ? 'field-error'"/>
-        <label for="text">Item</label>
+            th:field="*{name}"
+            th:class="${#fields.hasErrors('name')} ? 'field-error'"/>
+        <label for="description">Описание товара</label>
         <textarea
-            th:field="*{text}"
-            th:class="${#fields.hasErrors('text')} ? 'field-error'"></textarea>
+            th:field="*{description}"
+            th:class="${#fields.hasErrors('description')} ? 'field-error'"></textarea>
+        <label>Загрузить изображение</label>
+        <input type = "file"/>
+        <label for="price">Цена</label>
+        <input type="number"
+               th:field="*{price}"
+               th:class="${#fields.hasErrors('name')} ? 'field-error'"/>
         <div class="form-actions">
-          <input type="submit" value="Create"/>
+          <input type="submit" value="Сохранить"/>
         </div>
       </form>
     </div>

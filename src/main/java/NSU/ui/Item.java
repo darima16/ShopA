@@ -29,7 +29,7 @@ public class Item {
 
 	private String description;
 
-	@NotEmpty(message = "Price is required.")
+
 	private int price;
 
 	private Calendar created = Calendar.getInstance();

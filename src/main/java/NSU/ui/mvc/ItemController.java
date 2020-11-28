@@ -42,6 +42,11 @@ public class ItemController {
 	}
 
 	@RequestMapping
+	public ModelAndView nothing(){
+		return new ModelAndView("layout");
+	}
+
+	@RequestMapping(params = "shop")
 	public ModelAndView list() {
 		Iterable<Item> items = this.shopRepository.findAll();
 		return new ModelAndView("items/list", "items", items);
@@ -52,7 +57,7 @@ public class ItemController {
 		return new ModelAndView("items/view", "item", item);
 	}
 
-	@RequestMapping(params = "form", method = RequestMethod.GET)
+	@RequestMapping(params = "create", method = RequestMethod.GET)
 	public String createForm(@ModelAttribute Item item) {
 		return "items/form";
 	}
@@ -64,7 +69,7 @@ public class ItemController {
 			return new ModelAndView("items/form", "formErrors", result.getAllErrors());
 		}
 		item = this.shopRepository.save(item);
-		redirect.addFlashAttribute("globalMessage", "Successfully created a new item");
+		redirect.addFlashAttribute("globalMessage", "Товар успешно создан");
 		return new ModelAndView("redirect:/{item.id}", "item.id", item.getId());
 	}
 

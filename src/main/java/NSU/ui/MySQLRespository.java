@@ -65,13 +65,24 @@ public class MySQLRespository implements ShopRepository {
 
 
 
-
-
-
 	@Override
 	public Item save(Item item) {
-		return null;
+		String query = "INSERT INTO `items`(`name`, `description`, `price`) VALUES ('" +
+				 item.getName() + "', '" + item.getDescription() + "', '" + item.getPrice() + "')";
+		try (Statement st = con.createStatement()) {
+			st.executeUpdate(query);
+			query = "select max(id) from `items`";
+			try (ResultSet rsId = st.executeQuery(query)) {
+				rsId.next();
+				System.out.println(rsId.getLong(1));
+				item.setId(rsId.getLong(1));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return item;
 	}
+
 
 	@Override
 	public Item findItem(Long id) {
