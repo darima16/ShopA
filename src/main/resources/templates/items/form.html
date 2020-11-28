@@ -36,6 +36,7 @@
                th:field="*{price}"
                th:class="${#fields.hasErrors('name')} ? 'field-error'"/>
         <div class="form-actions">
+          <a href="list.html" th:href="@{?shop}" class="btn">Отмена</a>
           <input type="submit" value="Сохранить"/>
         </div>
       </form>
