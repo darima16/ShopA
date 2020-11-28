@@ -20,15 +20,17 @@ import org.hibernate.validator.constraints.NotEmpty;
 /**
  * @author Rob Winch
  */
-public class Message {
+public class Item {
 
 	private Long id;
 
-	@NotEmpty(message = "Message is required.")
-	private String text;
+	@NotEmpty(message = "Name is required.")
+	private String name;
 
-	@NotEmpty(message = "Summary is required.")
-	private String summary;
+	private String description;
+
+	@NotEmpty(message = "Price is required.")
+	private int price;
 
 	private Calendar created = Calendar.getInstance();
 
@@ -48,19 +50,27 @@ public class Message {
 		this.created = created;
 	}
 
-	public String getText() {
-		return this.text;
+	public String getName() {
+		return name;
 	}
 
-	public void setText(String text) {
-		this.text = text;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getSummary() {
-		return this.summary;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setSummary(String summary) {
-		this.summary = summary;
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public int getPrice() {
+		return this.price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
 	}
 }

@@ -23,28 +23,36 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
 
+import java.sql.SQLException;
+
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan
 public class SampleWebUiApplication {
 
 	@Bean
-	public MessageRepository messageRepository() {
-		return new InMemoryMessageRespository();
+	public ShopRepository itemsRepository() throws SQLException, ClassNotFoundException {
+		return new MySQLRespository();
 	}
 
 	@Bean
-	public Converter<String, Message> messageConverter() {
-		return new Converter<String, Message>() {
+	public Converter<String, Item> messageConverter() {
+		return new Converter<String, Item>() {
 			@Override
-			public Message convert(String id) {
-				return messageRepository().findMessage(Long.valueOf(id));
+			public Item convert(String id) {
+				try {
+					return itemsRepository().findItem(Long.valueOf(id));
+				} catch (SQLException | ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+				return null;
 			}
 		};
 	}
 
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(SampleWebUiApplication.class, args);
+
 	}
 
 }

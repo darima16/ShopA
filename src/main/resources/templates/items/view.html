@@ -2,39 +2,39 @@
   xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
   layout:decorator="layout">
   <head>
-    <title>Messages : View</title>
+    <title>Items : View</title>
   </head>
   <body>
-    <h1 layout:fragment="header">Messages : Create</h1>
+    <h1 layout:fragment="header">Items : Create</h1>
     <div layout:fragment="content"
         class="container">
       <div class="alert alert-success"
           th:if="${globalMessage}"
           th:text="${globalMessage}">
-        Some Success message
+        Some Success item
       </div>
       <div class="pull-right">
         <a th:href="@{/}" href="list.html">
-          Messages
+          Item
         </a>
       </div>
       <dl>
         <dt>ID</dt>
-        <dd id="id" th:text="${message.id}">123</dd>
+        <dd id="id" th:text="${item.id}">123</dd>
         <dt>Date</dt>
         <dd id="created"
-            th:text="${#calendars.format(message.created)}">
+            th:text="${#calendars.format(item.created)}">
           July 11, 2012 2:17:16 PM CDT
         </dd>
         <dt>Summary</dt>
         <dd id="summary"
-            th:text="${message.summary}">
+            th:text="${item.summary}">
           A short summary...
         </dd>
-        <dt>Message</dt>
+        <dt>Item</dt>
         <dd id="text"
-            th:text="${message.text}">
-          A detailed message that is longer than the summary.
+            th:text="${item.text}">
+          A detailed item that is longer than the summary.
         </dd>
       </dl>
     </div>

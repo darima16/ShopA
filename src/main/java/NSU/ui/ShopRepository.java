@@ -16,12 +16,12 @@ package NSU.ui;
 /**
  * @author Rob Winch
  */
-public interface MessageRepository {
+public interface ShopRepository {
 
-	Iterable<Message> findAll();
+	Iterable<Item> findAll();
 
-	Message save(Message message);
+	Item save(Item item);
 
-	Message findMessage(Long id);
+	Item findItem(Long id);
 
 }

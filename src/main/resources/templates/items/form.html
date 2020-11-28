@@ -3,15 +3,15 @@
   xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
   layout:decorator="layout">
   <head>
-    <title>Messages : Create</title>
+    <title>Items : Create</title>
   </head>
   <body>
-    <h1 layout:fragment="header">Messages : Create</h1>
+    <h1 layout:fragment="header">Items : Create</h1>
     <div layout:fragment="content"
         class="container">
-      <form id="messageForm"
+      <form id="itemsForm"
           th:action="@{/(form)}"
-          th:object="${message}"
+          th:object="${item}"
           action="#"
           method="post">
         <div th:if="${#fields.hasErrors('*')}"
@@ -23,14 +23,14 @@
         </div>
         <div class="pull-right">
           <a th:href="@{/}" href="messages.html">
-            Messages
+            Items
           </a>
         </div>
         <label for="summary">Summary</label>
         <input type="text"
             th:field="*{summary}"
             th:class="${#fields.hasErrors('summary')} ? 'field-error'"/>
-        <label for="text">Message</label>
+        <label for="text">Item</label>
         <textarea
             th:field="*{text}"
             th:class="${#fields.hasErrors('text')} ? 'field-error'"></textarea>
