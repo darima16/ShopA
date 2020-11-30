@@ -2,13 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
   layout:decorator="layout">
+
   <head>
     <title>Добавить товар</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet" href="../../css/main.css"/>
   </head>
   <body>
-    <h1 layout:fragment="header"></h1>
-    <div layout:fragment="content"
-        class="container">
+
+    <h1 layout:fragment="header"  ></h1>
+    <div layout:fragment="content" class="container">
       <form id="itemsForm"
           th:action="@{/(form)}"
           th:object="${item}"

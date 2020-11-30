@@ -2,23 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
   <head>
     <title>Layout</title>
-    <link rel="stylesheet"
-      th:href="@{/css/bootstrap.min.css}"
-      href="../../css/bootstrap.min.css"/>
+
+    <link th:href="@{/css/main.css}" rel="stylesheet" href="../../css/main.css"/>
+
+
   </head>
   <body>
-    <div class="container">
-      <div class="navbar">
-        <div class="navbar-inner">
-          <ul class="nav">
+  <div class="container">
+      <div class="navbar-inner">
+        <div class="navbar" >
+          <ul class="nav" >
             <li>
               <a th:href="@{/?create}" href="form.html">
                 Добавить товар
               </a>
             </li>
-            <li>
-              |
-            </li>
+
             <li>
               <a th:href="@{/?shop}" href="messages.html">
                 Магазин
@@ -28,9 +27,9 @@
         </div>
       </div>
       <h1 layout:fragment="header"></h1>
-      <div layout:fragment="content">
-        Здесь пока ничего нет
+      <div layout:fragment="content" style="text-align:center;margin-top:200px;">
+        У ВАС ПОКА НЕТ ТОВАРОВ
       </div>
-    </div>
+  </div>
   </body>
 </html>
