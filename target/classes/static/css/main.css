@@ -20,7 +20,7 @@ margin-bottom:50%;
 
 li {
 display: inline;
-border-left:3px solid white;
+border-left:2px solid white;
 padding:4px;
 }
 
@@ -30,13 +30,21 @@ border:none;
 }
 
 .navbar-inner{
-background:#800000;
+background:#650406;
 height:120px;
-line-height:115px;
+line-height:110px;
 position: fixed;
 top: 0;
 left: 0;
 width: 100%;
+border:2px solid black;
+}
+
+.line {
+  border-bottom: 2px solid white;
+  margin: -25px 0;
+  margin-left:-40px;
+  padding:2px;
 }
 
 .no-links{

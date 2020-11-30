@@ -10,8 +10,7 @@
   <body>
   <div class="container">
       <div class="navbar-inner">
-        <div class="navbar" >
-          <ul class="nav" >
+          <ul>
             <li>
               <a th:href="@{/?create}" href="form.html" class="no-links">
                 ДОБАВИТЬ ТОВАР
@@ -22,9 +21,9 @@
               <a th:href="@{/?shop}" href="messages.html" class="no-links">
                  МАГАЗИН
               </a>
+                <div class="line"></div>
             </li>
           </ul>
-        </div>
       </div>
       <h1 layout:fragment="header"></h1>
       <div layout:fragment="content" style="text-align:center;margin-top:200px;">
