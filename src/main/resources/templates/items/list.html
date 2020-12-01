@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-  layout:decorator="layout">
-  <head>
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout">
+
+<head>
     <title>Магазин</title>
-  </head>
-  <body>
-    <div layout:fragment="content" class="container">
-      <ul class="products clearfix" th:each="item : ${items}">
-        <li class="product-wrapper" th:text="${item.name}">
-        </li>
-        <li class="product-wrapper" th:text="${item.price}">
-        </li>
-      </ul>
-    </div>
-  </body>
+
+    <link rel="stylesheet"
+          th:href="@{/css/main.css}"
+          href="../../css/main.css"/>
+</head>
+<body>
+<div layout:fragment="content">
+        <div class="grid-container">
+        <ul th:each="item : ${items}">
+                <div>
+            <div class="product-item">
+              <li>
+                <img src="../static/images/no-image.jpg" th:src="@{images/no-images.jpg}"/>
+              </li>
+              <li class="product-wrapper"> <h3 th:text="${item.name}"> </h3>
+                </li>
+                <li class="price" th:text="${item.price}+' RUB'">
+                </li>
+            </div>
+            </div>
+        </ul>
+        </div>
+</div>
+</body>
 </html>

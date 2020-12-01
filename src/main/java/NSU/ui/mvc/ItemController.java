@@ -28,6 +28,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import NSU.ui.ShopRepository;
 
+import java.io.IOException;
+
 /**
  * @author Rob Winch
  */
@@ -64,11 +66,12 @@ public class ItemController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView create(@Valid Item item, BindingResult result,
-                               RedirectAttributes redirect) {
+                               RedirectAttributes redirect) throws IOException {
 		if (result.hasErrors()) {
 			return new ModelAndView("items/form", "formErrors", result.getAllErrors());
 		}
 		item = this.shopRepository.save(item);
+		System.out.println(item.getPrice());
 		redirect.addFlashAttribute("globalMessage", "Товар успешно создан");
 		return new ModelAndView("redirect:/{item.id}", "item.id", item.getId());
 	}

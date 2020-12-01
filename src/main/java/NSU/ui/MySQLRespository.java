@@ -16,6 +16,9 @@
 
 package NSU.ui;
 
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -27,7 +30,7 @@ public class MySQLRespository implements ShopRepository {
 
 	public MySQLRespository() throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
-		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/shop?useUnicode=true&characterEncoding=utf8", "root", "root");
+		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/shop?useUnicode=true&characterEncoding=utf8", "root", "pqypwz3v");
 	}
 
 	public void closeConnection() {
@@ -61,25 +64,33 @@ public class MySQLRespository implements ShopRepository {
 		item.setName(rs.getString("name"));
 		item.setDescription(rs.getString("description"));
 		item.setPrice(rs.getInt("price"));
+		File image = new File("C:\\Users\\Programming.LAPTOP-SIV4CDTS\\IdeaProjects\\shop\\target\\classes\\static\\"+rs.getString("image"));
+		item.setImage(image);
 	}
 
 
 
 	@Override
-	public Item save(Item item) {
-		String query = "INSERT INTO `items`(`name`, `description`, `price`) VALUES ('" +
-				 item.getName() + "', '" + item.getDescription() + "', '" + item.getPrice() + "')";
+	public Item save(Item item) throws IOException {
+//		File image = item.getImage();
+//		byte[] bytes = Files.readAllBytes(Paths.get(image.getPath()));
+//		BufferedOutputStream stream =
+//				new BufferedOutputStream(new FileOutputStream(new File("C:\\Users\\Programming.LAPTOP-SIV4CDTS\\IdeaProjects\\shop\\target\\classes\\static\\images\\"+image.getName())));
+//		stream.write(bytes);
+//		stream.close();
+		String query = "INSERT INTO `items`(`name`, `description`, `price`, `image`) VALUES ('" +
+				 item.getName() + "', '" + item.getDescription() + "', '" + item.getPrice() + "', '" + item.getImage() +"')";//image.getName()
 		try (Statement st = con.createStatement()) {
 			st.executeUpdate(query);
 			query = "select max(id) from `items`";
 			try (ResultSet rsId = st.executeQuery(query)) {
 				rsId.next();
-				System.out.println(rsId.getLong(1));
 				item.setId(rsId.getLong(1));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		System.out.println(item.getPrice());
 		return item;
 	}
 

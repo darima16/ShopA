@@ -10,14 +10,14 @@
   <body>
   <div class="container">
       <div class="navbar-inner">
-          <ul>
-            <li>
+          <ul class="layout-ul">
+            <li class="layout-li">
               <a th:href="@{/?create}" href="form.html" class="no-links">
                 ДОБАВИТЬ ТОВАР
               </a>
             </li>
 
-            <li>
+            <li class="layout-li">
               <a th:href="@{/?shop}" href="messages.html" class="no-links">
                  МАГАЗИН
               </a>
@@ -25,8 +25,7 @@
             </li>
           </ul>
       </div>
-      <h1 layout:fragment="header"></h1>
-      <div layout:fragment="content" style="text-align:center;margin-top:200px;">
+      <div layout:fragment="content" style="text-align:center;margin-top:150px;">
         У ВАС ПОКА НЕТ ТОВАРОВ
       </div>
   </div>

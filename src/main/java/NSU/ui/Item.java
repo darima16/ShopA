@@ -13,6 +13,7 @@
 
 package NSU.ui;
 
+import java.io.File;
 import java.util.Calendar;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -29,8 +30,9 @@ public class Item {
 
 	private String description;
 
-
 	private int price;
+
+	private File image;
 
 	private Calendar created = Calendar.getInstance();
 
@@ -73,4 +75,8 @@ public class Item {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+
+	public File getImage() { return this.image; }
+
+	public void setImage(File image) {this.image = image; }
 }

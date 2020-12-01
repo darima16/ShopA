@@ -13,6 +13,9 @@
 
 package NSU.ui;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 /**
  * @author Rob Winch
  */
@@ -20,7 +23,7 @@ public interface ShopRepository {
 
 	Iterable<Item> findAll();
 
-	Item save(Item item);
+	Item save(Item item) throws IOException;
 
 	Item findItem(Long id);
 
