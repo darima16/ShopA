@@ -31,8 +31,11 @@
         <textarea
             th:field="*{description}"
             th:class="${#fields.hasErrors('description')} ? 'field-error'"></textarea>
+        <div class="img_wrapper">
+          <img src="raw.png" alt=""/>
+        </div>
         <label>Загрузить изображение</label>
-        <input type = "file"/>
+        <input type = "file" class="image"/>
         <label for="price">Цена</label>
         <input type="number"
                th:field="*{price}"
