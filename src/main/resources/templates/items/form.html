@@ -11,6 +11,7 @@
 
 <h1 layout:fragment="header"></h1>
 <div layout:fragment="content" class="container">
+
     <form id="itemsForm"
           th:action="@{/(form)}"
           th:object="${item}"
@@ -30,8 +31,25 @@
                 <th>
                     <img src="../static/images/no-images.jpg" width="250" height="145" style="margin-top:150px;"
                          th:src="@{images/no-images.jpg}"/>
-                    <label for="file">Загрузить</label>
-                    <input type="file" th:class="image"/></th>
+<!--                    <a th:href="@{/upload}" href="test.html" class="no-links">-->
+
+<!--                        <form enctype="multipart/form-data" th:action="@{/upload}" method="post" name = "file" target="hiddenframe">-->
+<!--                            <input type="hidden" name="MAX_FILE_SIZE" value="64000"/>-->
+<!--                            <input  name="file" type="file"/>-->
+<!--                        </form>-->
+<!--                        <iframe name="file" style="width:0px; height:0px; border:0px"></iframe>-->
+
+                        <form method="post" action="#" th:action="@{/upload}" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <input type="file" name="file" class="form-control-file"/>
+                        </div>
+                    </form>
+<!--                        -->
+<!--                        Загрузить изображение-->
+<!--                    </a>-->
+                    </th>
+<!--                    <label for="file">Загрузить</label>-->
+<!--                    <input type="file" th:class="image"/></th>-->
                 <th><label for="name" style="margin-right:630px;">Название</label><input type="text"
                                                                                          th:field="*{name}"
                                                                                          th:class="${#fields.hasErrors('name')} ? 'field-error'"/>

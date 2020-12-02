@@ -30,7 +30,7 @@ public class MySQLRespository implements ShopRepository {
 
 	public MySQLRespository() throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
-		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/shop?useUnicode=true&characterEncoding=utf8", "root", "pqypwz3v");
+		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/shop?useUnicode=true&characterEncoding=utf8", "root", "");
 	}
 
 	public void closeConnection() {
@@ -78,6 +78,7 @@ public class MySQLRespository implements ShopRepository {
 //				new BufferedOutputStream(new FileOutputStream(new File("C:\\Users\\Programming.LAPTOP-SIV4CDTS\\IdeaProjects\\shop\\target\\classes\\static\\images\\"+image.getName())));
 //		stream.write(bytes);
 //		stream.close();
+		System.out.println(item.getImage());
 		String query = "INSERT INTO `items`(`name`, `description`, `price`, `image`) VALUES ('" +
 				 item.getName() + "', '" + item.getDescription() + "', '" + item.getPrice() + "', '" + item.getImage() +"')";//image.getName()
 		try (Statement st = con.createStatement()) {
